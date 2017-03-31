@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <script>
+        <generate template="/applicationContext-redis.xml" destfile="/applicationContext-redis.xml" charset="utf-8"/>
+    </script>
+</config>

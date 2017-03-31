@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry location="/duotin/mysql-connector-java-5.1.6.jar"/>
+    <context id="context1" targetRuntime="MyBatis3"
+             defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="com.duotin.generator.plugins.BuildersPlugin"/>
+        <plugin type="com.duotin.generator.plugins.CanonicalDomainPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.MysqlPaginationPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.ShardTablePlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.SelectByMapPlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Conditions"/>
+        </plugin>
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释，默认false，true：去除；false：不去除 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 指定在生成的注释是否将包括时间戳，默认是false -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.1.10.202:3306/dt_www" userId="duo113"
+                        password="helloduo"/>
+
+        <javaModelGenerator targetPackage="com.duotin.dao.domain"
+                            targetProject="jduotin_services/src/main/java"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="jduotin_services/src/main/resources"/>
+        <javaClientGenerator targetPackage="com.duotin.dao.mapper"
+                             targetProject="jduotin_services/src/main/java" type="XMLMAPPER"/>
+
+        <!--<table tableName="duotin_device_statics" domainObjectName="device.DeviceStatics">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<javaModelGenerator targetPackage="com.duotin.dao.domain"-->
+                            <!--targetProject="jduotin_service/src/main/java"/>-->
+        <!--<sqlMapGenerator targetPackage="mapper" targetProject="jduotin_service/src/main/resources"/>-->
+        <!--<javaClientGenerator targetPackage="com.duotin.dao.mapper"-->
+                             <!--targetProject="jduotin_service/src/main/java" type="XMLMAPPER"/>-->
+
+        <!--<table tableName="duotin_user_download_history_2016_09" domainObjectName="download.UserDownloadHistroy">-->
+            <!--<property name="partitionedTable" value="ub"/>-->
+            <!--<property name="shardType" value="DATA"/>-->
+            <!--<property name="shardDate" value="created_at"/>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="duotin_comment" domainObjectName="comment.Comment">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_admin" domainObjectName="user.Admin">-->
+        <!--<property name="partitionedTable" value="www" />-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true" />-->
+        <!--</table>-->
+        <!--<table tableName="duotin_authassignment" domainObjectName="auth.AuthAssignment">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_content_displayorder" domainObjectName="content.ContentDisplayorder">
+            <property name="partitionedTable" value="www"/>
+        </table>-->
+
+        <!--<table tableName="duotin_users" domainObjectName="user.User">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="is_subscribe_category" javaType="Integer"/>-->
+        <!--<columnOverride column="is_podcaster" javaType="Integer"/>-->
+        <!--<columnOverride column="is_v" javaType="Integer"/>-->
+        <!--<columnOverride column="sex" javaType="Integer"/>-->
+        <!--<columnOverride column="user_state" javaType="Integer"/>-->
+        <!--<columnOverride column="is_identification" javaType="Integer"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_crawler_hot" domainObjectName="crawler.CrawlerHot">-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_crawler_album" domainObjectName="crawler.CrawlerAlbum">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table> -->
+        <!--<table tableName="duotin_crawler_task" domainObjectName="crawler.CrawlerTask">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="status" javaType="Integer"></columnOverride>-->
+        <!--<columnOverride column="type" javaType="Integer"></columnOverride>-->
+
+        <!--</table>-->
+
+        <!--<table tableName="duotin_crawler_log" domainObjectName="crawler.CrawlerLog">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="status" javaType="Integer"></columnOverride>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_crawler_subscribe" domainObjectName="crawler.CrawlerSubscribe">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="is_del" javaType="Boolean"></columnOverride>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_transcoding" domainObjectName="crawler.Transcoding">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="is_del" javaType="Boolean"></columnOverride>-->
+        <!--<columnOverride column="transcoding_status" javaType="Integer"></columnOverride>-->
+        <!--<columnOverride column="size" javaType="String"></columnOverride>-->
+        <!--<columnOverride column="is_upload" javaType="Integer"></columnOverride>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_content_displayorder" domainObjectName="content.ContentDisplayorder">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="is_del" javaType="Integer"></columnOverride>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="duotin_crawler_file" domainObjectName="crawler.CrawlerFile">-->
+        <!--<table tableName="duotin_sensitive_words" domainObjectName="text.SensitiveWords">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_messages" domainObjectName="message.Messages">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_tag" domainObjectName="user.UserTag">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_extra" domainObjectName="user.UserExtra">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+
+        <!--<table tableName="duotin_podcast_apply_v" domainObjectName="user.PodcastApplyV">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_announcements" domainObjectName="announcement.Announcements">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_sharding_table_unique_key" domainObjectName="shard.ShardingTableUniqueKey">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_collect" domainObjectName="user.UserCollect">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_page" domainObjectName="operating.RecommendPage">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_page_content" domainObjectName="recommend.PageContent">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_content_blame_stat" domainObjectName="comment.ContentBlameStat">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_blame" domainObjectName="comment.Blame">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_openid" domainObjectName="user.Openid">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_app_version" domainObjectName="AppVersion">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_sso_persistent_cache" domainObjectName="cache.SsoPersistentCache">-->
+        <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID() AS id" identity="true"-->
+        <!--/>-->
+        <!--<columnOverride column="status" jdbcType="INTEGER" javaType="com.duotin.dao.domain.dict.cache.CacheStatus"-->
+        <!--typeHandler="com.duotin.dao.domain.handler.CacheStatusHandler"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_app_version_new" domainObjectName="version.VersionNew">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+
+        <!--<columnOverride column="status" jdbcType="INTEGER" javaType="com.duotin.dao.domain.dict.cache.CacheStatus"-->
+        <!--typeHandler="com.duotin.dao.domain.handler.CacheStatusHandler"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_comment" domainObjectName="comment.Comment">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="is_delete" javaType="Integer"/>-->
+        <!--<columnOverride column="type" javaType="Integer"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_ranking" domainObjectName="rank.Ranking">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+
+
+        <!--<table tableName="duotin_device_login_statics" domainObjectName="device.DeviceLoginStatics">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_subscribe_album_rank" domainObjectName="rank.UserSubscribeAlbumRank">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="album_id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_user_track_listenlog_rank" domainObjectName="rank.UserTrackListenlogRank">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="track_id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_user_track_comment_rank" domainObjectName="rank.UserTrackCommentRank">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="track_id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--榜单3.0-->
+        <!--<table tableName="duotin_rank_new" domainObjectName="rank.RankNew">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_rank_list" domainObjectName="rank.RankList">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_rank_list_system" domainObjectName="rank.RankListSystem">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="duotin_content_complaint" domainObjectName="complaint.ContentComplaint">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_content_complaint" domainObjectName="complaint.UserContentComplaint">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_certification" domainObjectName="podcast.UserCertification">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="certificate_type" javaType="Integer"/>-->
+            <!--<columnOverride column="status" javaType="Integer"/>-->
+            <!--<columnOverride column="is_del" javaType="Integer"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_user_home_move" domainObjectName="podcast.UserHomeMove">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="status" javaType="Integer"/>-->
+            <!--<columnOverride column="source" javaType="Integer"/>-->
+            <!--<columnOverride column="is_del" javaType="Integer"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_open_app_single" domainObjectName="open.OpenAppSingle">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_podcast_editor" domainObjectName="podcast.PodcastEditor">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_feedback" domainObjectName="feedback.Feedback">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<table tableName="duotin_device_statics" domainObjectName="device.DeviceStatics">-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<table tableName="duotin_open_app_single" domainObjectName="open.OpenAppSingle">-->
+        <!--<property name="partitionedTable" value="www"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_podcast_editor" domainObjectName="podcast.PodcastEditor">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <table tableName="duotin_column_task" domainObjectName="column.ColumnTask">
+            <property name="partitionedTable" value="www"/>
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="status" javaType="Integer"/>
+            <columnOverride column="is_del" javaType="Integer"/>
+        </table>
+        <table tableName="duotin_column_task_content" domainObjectName="column.ColumnTaskContent">
+            <property name="partitionedTable" value="www"/>
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

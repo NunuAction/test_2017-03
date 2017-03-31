@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry location="/duotin/mysql-connector-java-5.1.6.jar"/>
+    <context id="context1" targetRuntime="MyBatis3" defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="com.duotin.generator.plugins.BuildersPlugin"/>
+        <plugin type="com.duotin.generator.plugins.CanonicalDomainPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.MysqlPaginationPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.ShardTablePlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Conditions"/>
+        </plugin>
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释，默认false，true：去除；false：不去除 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 指定在生成的注释是否将包括时间戳，默认是false -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.1.10.202:3306/dt_wechat" userId="duo113"
+                        password="helloduo"/>
+
+        <javaModelGenerator targetPackage="com.duotin.dao.domain"
+                            targetProject="jduotin_service/src/main/java"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="jduotin_service/src/main/resources"/>
+        <javaClientGenerator targetPackage="com.duotin.dao.mapper"
+                             targetProject="jduotin_service/src/main/java" type="XMLMAPPER"/>
+
+        <!--<table tableName="duotin_wechat_account" domainObjectName="wechat.Pubaccount">-->
+            <!--<property name="partitionedTable" value="wc"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="type" javaType="Integer"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_wechat_autoreply" domainObjectName="wechat.autoreply.Autoreply">-->
+            <!--<property name="partitionedTable" value="wc"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="match_type" javaType="Integer"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_wechat_user" domainObjectName="wechat.WechatUser">-->
+            <!--<property name="partitionedTable" value="wc"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="sex" javaType="Integer"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_wechat_article" domainObjectName="wechat.material.Article">-->
+            <!--<property name="partitionedTable" value="wc"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="description" javaType="String"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_wechat_daily_recommend"-->
+               <!--domainObjectName="wechat.customize.DailyRecommend">-->
+            <!--<property name="partitionedTable" value="wc"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_wechat_news" domainObjectName="wechat.material.News">-->
+            <!--<property name="partitionedTable" value="wc"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_wechat_image" domainObjectName="wechat.material.Image">-->
+            <!--<property name="partitionedTable" value="wc"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_wechat_mass_message" domainObjectName="wechat.message.MassMessage">-->
+            <!--<property name="partitionedTable" value="wc"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="status" javaType="Integer"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_wechat_menu" domainObjectName="wechat.Menu">-->
+            <!--<property name="partitionedTable" value="wc"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_wechat_messages" domainObjectName="wechat.message.Message">-->
+            <!--<property name="partitionedTable" value="wc"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="msg_xml" javaType="String"/>-->
+            <!--<columnOverride column="type" javaType="Integer"/>-->
+        <!--</table>-->
+
+        <table tableName="duotin_wechat_random_program"
+               domainObjectName="wechat.customize.RandomProgram">
+            <property name="partitionedTable" value="wc"/>
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+
+        <!--<table tableName="duotin_wechat_hongbao_log" domainObjectName="wechat.pay.HongBaoLog">-->
+            <!--<property name="partitionedTable" value="wc"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="request_content" javaType="String"/>-->
+            <!--<columnOverride column="response_content" javaType="String"/>-->
+            <!--<columnOverride column="is_del"-->
+                            <!--javaType="com.duotin.dao.domain.dict.DelStatus" jdbcType="INTEGER"-->
+                            <!--typeHandler="com.duotin.dao.domain.handler.DelStatusHandler"></columnOverride>-->
+        <!--</table>-->
+
+
+    </context>
+</generatorConfiguration>

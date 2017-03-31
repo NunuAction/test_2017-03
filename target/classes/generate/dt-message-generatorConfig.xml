@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry location="/duotin/mysql-connector-java-5.1.6.jar"/>
+    <context id="context1" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="com.duotin.generator.plugins.BuildersPlugin"/>
+        <plugin type="com.duotin.generator.plugins.CanonicalDomainPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.MysqlPaginationPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.ShardTablePlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.SelectByMapPlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Conditions"/>
+        </plugin>
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释，默认false，true：去除；false：不去除 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 指定在生成的注释是否将包括时间戳，默认是false -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.1.10.202:3306/dt_message" userId="duo113"
+                        password="helloduo"/>
+
+        <javaModelGenerator targetPackage="com.duotin.dao.domain"
+                            targetProject="jduotin_service/src/main/java"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="jduotin_service/src/main/resources"/>
+        <javaClientGenerator targetPackage="com.duotin.dao.mapper"
+                             targetProject="jduotin_service/src/main/java" type="XMLMAPPER"/>
+
+        <!--<table tableName="duotin_message_template" domainObjectName="notify.message.Template">-->
+        <!--<property name="partitionedTable" value="msg"/>-->
+
+        <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID() AS id"-->
+        <!--identity="true"/>-->
+        <!--<columnOverride column="is_del" javaType="Integer"/>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="duotin_email_template" domainObjectName="notify.email.EmailTemplate">-->
+        <!--<property name="partitionedTable" value="msg"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="is_del" javaType="Integer"/>-->
+        <!--<columnOverride column="content" javaType="String"/>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="duotin_email_log" domainObjectName="notify.email.EmailLog">-->
+        <!--<property name="partitionedTable" value="msg"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="status" javaType="Integer"/>-->
+        <!--<columnOverride column="content" javaType="String"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_message_template" domainObjectName="notify.message.Template">-->
+        <!--<property name="partitionedTable" value="msg"/>-->
+        <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID() AS id"-->
+        <!--identity="true"/>-->
+        <!--<columnOverride column="type" javaType="Integer"/>-->
+        <!--<columnOverride column="is_del"-->
+        <!--javaType="com.duotin.dao.domain.dict.DelStatus" jdbcType="INTEGER"-->
+        <!--typeHandler="com.duotin.dao.domain.handler.DelStatusHandler"></columnOverride>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_device_token" domainObjectName="device.UserDeviceToken">-->
+        <!--<property name="partitionedTable" value="msg"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="app_id" javaType="Integer"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_push_log" domainObjectName="log.UserPushLog">-->
+        <!--<property name="partitionedTable" value="msg"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="type" javaType="Integer"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_system_message" domainObjectName="notify.message.UserSystemMessage">-->
+        <!--<property name="partitionedTable" value="msg"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="type" javaType="Integer"/>-->
+        <!--<columnOverride column="is_del"-->
+        <!--javaType="com.duotin.dao.domain.dict.DelStatus" jdbcType="INTEGER"-->
+        <!--typeHandler="com.duotin.dao.domain.handler.DelStatusHandler"></columnOverride>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_behavior" domainObjectName="notify.user.UserBehavior">-->
+        <!--<property name="partitionedTable" value="msg"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_push_template" domainObjectName="push.PushTemplate">-->
+        <!--<property name="partitionedTable" value="msg"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+
+
+        <!--<table tableName="duotin_push_task" domainObjectName="push.PushTask">-->
+        <!--<property name="partitionedTable" value="msg"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="is_del"-->
+        <!--javaType="com.duotin.common.DelStatus" jdbcType="INTEGER"-->
+        <!--typeHandler="com.duotin.common.handler.DelStatusHandler"></columnOverride>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_email_template" domainObjectName="notify.email.EmailTemplate">-->
+        <!--<property name="partitionedTable" value="msg"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="content" javaType="String"/>-->
+        <!--<columnOverride column="is_del"-->
+        <!--javaType="com.duotin.dao.domain.dict.DelStatus" jdbcType="INTEGER"-->
+        <!--typeHandler="com.duotin.dao.domain.handler.DelStatusHandler"></columnOverride>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_email_log" domainObjectName="notify.email.EmailLog">-->
+        <!--<property name="partitionedTable" value="msg"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="status" javaType="Integer"/>-->
+        <!--<columnOverride column="content" javaType="String"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_device_token" domainObjectName="notify.push.UserDeviceToken">-->
+        <!--<property name="partitionedTable" value="msg"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--<columnOverride column="app_id" javaType="Integer"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_email_log" domainObjectName="email.EmailLog">-->
+            <!--<property name="partitionedTable" value="msg"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="status" javaType="Integer"/>-->
+            <!--<columnOverride column="content" javaType="String"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_message_template" domainObjectName="message.Template">-->
+            <!--<property name="partitionedTable" value="msg" />-->
+            <!--<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID() AS id"-->
+                          <!--identity="true" />-->
+            <!--<columnOverride column="type" javaType="Integer" />-->
+            <!--<columnOverride column="is_del"-->
+                            <!--javaType="com.duotin.common.DelStatus" jdbcType="INTEGER"-->
+                            <!--typeHandler="com.duotin.common.handler.DelStatusHandler"></columnOverride>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_behavior" domainObjectName="behavior.UserBehavior">-->
+            <!--<property name="partitionedTable" value="msg" />-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true" />-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_device_token" domainObjectName="device.UserDeviceToken">-->
+            <!--<property name="partitionedTable" value="msg" />-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true" />-->
+            <!--<columnOverride column="app_id" javaType="Integer" />-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_push_log" domainObjectName="log.UserPushLog">-->
+            <!--<property name="partitionedTable" value="msg" />-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true" />-->
+            <!--<columnOverride column="type" javaType="Integer" />-->
+        <!--</table>-->
+
+        <table tableName="duotin_user_system_message_behavior" domainObjectName="behavior.UserSystemMessageBehavior">
+        <property name="partitionedTable" value="msg" />
+        <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+    </context>
+</generatorConfiguration>

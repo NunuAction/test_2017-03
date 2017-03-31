@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry location="/Users/duotin/maven_repo/mysql-connector-java-5.1.31.jar"/>
+    <context id="context1" targetRuntime="MyBatis3">
+
+        <property name="autoDelimitKeywords" value="false"></property>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="com.duotin.generator.plugins.BuildersPlugin"/>
+        <plugin type="com.duotin.generator.plugins.CanonicalDomainPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.MysqlPaginationPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.ShardTablePlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.SelectByMapPlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Conditions"/>
+        </plugin>
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释，默认false，true：去除；false：不去除 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 指定在生成的注释是否将包括时间戳，默认是false -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.1.10.202:3306/dt_core" userId="duo113"
+                        password="helloduo"/>
+
+
+        <javaModelGenerator targetPackage="com.duotin.domain"
+                            targetProject="jduotin_core/core-client/src/main/domain"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="jduotin_core/core-dao/src/main/resources"/>
+        <javaClientGenerator targetPackage="com.duotin.dao.mapper"
+                             targetProject="jduotin_core/core-dao/src/main/java" type="XMLMAPPER"/>
+
+        <!--<table tableName="duotin_tag" domainObjectName="tag.Tag">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <table tableName="duotin_podcast_tag" domainObjectName="tag.PodcastTag">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="is_del" javaType="Byte"/>
+            <columnOverride column="status" javaType="Byte"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

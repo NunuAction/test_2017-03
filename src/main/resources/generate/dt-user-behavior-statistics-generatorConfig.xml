@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry location="/duotin/mysql-connector-java-5.1.6.jar"/>
+    <context id="context1" targetRuntime="MyBatis3"
+             defaultModelType="flat">
+
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="autoDelimitKeywords" value="true"/>
+
+
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="com.duotin.generator.plugins.BuildersPlugin"/>
+        <plugin type="com.duotin.generator.plugins.CanonicalDomainPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.MysqlPaginationPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.ShardTablePlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.SelectByMapPlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Conditions"/>
+        </plugin>
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释，默认false，true：去除；false：不去除 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 指定在生成的注释是否将包括时间戳，默认是false -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.1.10.202:3306/dt_user_behavior" userId="duo113"
+                        password="helloduo"/>
+
+        <javaModelGenerator targetPackage="com.duotin.statistics.dao.domain"
+                            targetProject="jduotin_statistics/src/main/java"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="jduotin_statistics/src/main/resources"/>
+        <javaClientGenerator targetPackage="com.duotin.statistics.dao.mapper"
+                             targetProject="jduotin_statistics/src/main/java" type="XMLMAPPER"/>
+
+
+        <!--<table tableName="duotin_statistics_new_content_sum" domainObjectName="statistics.StatisticsNewContentSum">-->
+            <!--<property name="partitionedTable" value="ub"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_listen_history" domainObjectName="statistics.UserListenHistory">-->
+            <!--<property name="partitionedTable" value="ub"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_collect" domainObjectName="statistics.UserCollect">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_comment" domainObjectName="statistics.Comment">-->
+            <!--<property name="partitionedTable" value="www"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_statistics_new_content_daily" domainObjectName="statistics.StatisticsNewContentDaily">-->
+            <!--<property name="partitionedTable" value="ub"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_statistics_new_content_daily_sum" domainObjectName="statistics.StatisticsNewContentDailySum">-->
+            <!--<property name="partitionedTable" value="ub"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_statistics_new_content_hour_sum" domainObjectName="statistics.StatisticsNewContentHourSum">-->
+            <!--<property name="partitionedTable" value="ub"/>-->
+        <!--</table>-->
+
+        <table tableName="duotin_statistics_new_album_sum" domainObjectName="statistics.StatisticsNewAlbumSum">
+            <property name="partitionedTable" value="ub"/>
+            <columnOverride column="play_duration" javaType="Long"/>
+        </table>
+
+        <table tableName="duotin_statistics_new_album_daily" domainObjectName="statistics.StatisticsNewAlbumDaily">
+            <property name="partitionedTable" value="ub"/>
+            <columnOverride column="play_duration" javaType="Long"/>
+        </table>
+
+        <!--<table tableName="duotin_statistics_new_podcaster_sum" domainObjectName="statistics.StatisticsNewPodcasterSum">-->
+            <!--<property name="partitionedTable" value="ub"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_statistics_new_podcaster_daily" domainObjectName="statistics.StatisticsNewPodcasterDaily">-->
+            <!--<property name="partitionedTable" value="ub"/>-->
+        <!--</table>-->
+
+
+
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry location="/duotin/mysql-connector-java-5.1.6.jar"/>
+    <context id="context1" targetRuntime="MyBatis3"
+             defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="com.duotin.generator.plugins.BuildersPlugin"/>
+        <plugin type="com.duotin.generator.plugins.CanonicalDomainPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.MysqlPaginationPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.ShardTablePlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.SelectByMapPlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Conditions"/>
+        </plugin>
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释，默认false，true：去除；false：不去除 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 指定在生成的注释是否将包括时间戳，默认是false -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.1.10.202:3306/dt_ad" userId="duo113"
+                        password="helloduo"/>
+
+        <javaModelGenerator targetPackage="com.duotin.domain"
+                            targetProject="../jduotin_ad/ad-client/src/main/java"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="../jduotin_ad/ad-server/src/main/resources"/>
+        <javaClientGenerator targetPackage="com.duotin.advertise.dao.mapper"
+                             targetProject="../jduotin_ad/ad-server/src/main/java" type="XMLMAPPER"/>
+
+        <!--<table tableName="duotin_position" domainObjectName="ad.Position">-->
+            <!--<property name="partitionedTable" value="ad"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_region" domainObjectName="ad.Region">-->
+            <!--<property name="partitionedTable" value="ad"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <table tableName="duotin_advertiser" domainObjectName="ad.Advertiser">
+            <property name="partitionedTable" value="ad"/>
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+
+        <table tableName="duotin_advertiser_extra" domainObjectName="ad.AdvertiserExtra">
+            <property name="partitionedTable" value="ad"/>
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+
+        <!--<table tableName="duotin_ad_channle_region" domainObjectName="ad.AdChannelRegion">-->
+            <!--<property name="partitionedTable" value="ad"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_position" domainObjectName="ad.Position">-->
+        <!--<property name="partitionedTable" value="ad"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_region" domainObjectName="ad.Region">-->
+        <!--<property name="partitionedTable" value="ad"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_advertiser" domainObjectName="ad.Advertiser">-->
+        <!--<property name="partitionedTable" value="ad"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_advertiser_extra" domainObjectName="ad.AdvertiserExtra">-->
+        <!--<property name="partitionedTable" value="ad"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_ad_channle_region" domainObjectName="ad.AdChannelRegion">-->
+        <!--<property name="partitionedTable" value="ad"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_ad_stat" domainObjectName="ad.AdStat">-->
+            <!--<property name="partitionedTable" value="ad"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_ad_history_2017_03" domainObjectName="ad.AdHistory">-->
+            <!--<property name="partitionedTable" value="ad"/>-->
+            <!--<property name="shardType" value="DATA"/>-->
+            <!--<property name="shardDate" value="created_at"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_ad_stat_daily" domainObjectName="ad.AdStatDaily">-->
+            <!--<property name="partitionedTable" value="ad"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_ad_history_2017_03" domainObjectName="ad.AdHistory">-->
+        <!--<property name="partitionedTable" value="ad"/>-->
+        <!--<property name="shardType" value="DATA"/>-->
+        <!--<property name="shardDate" value="created_at"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_advertise_function" domainObjectName="auth.AdvertiseFunction">-->
+        <!--<property name="partitionedTable" value="ad"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_advertise_role" domainObjectName="auth.AdvertiseRole">-->
+        <!--<property name="partitionedTable" value="ad"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_advertise_role_function" domainObjectName="auth.AdvertiseRoleFunction">-->
+        <!--<property name="partitionedTable" value="ad"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_advertise_role_user" domainObjectName="auth.AdvertiseRoleUser">-->
+        <!--<property name="partitionedTable" value="ad"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+    </context>
+</generatorConfiguration>

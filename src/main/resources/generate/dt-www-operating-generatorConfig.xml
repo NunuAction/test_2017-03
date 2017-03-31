@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry location="/duotin/mysql-connector-java-5.1.6.jar"/>
+    <context id="context1" targetRuntime="MyBatis3">
+
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="autoDelimitKeywords" value="true"/>
+
+
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="com.duotin.generator.plugins.BuildersPlugin"/>
+        <plugin type="com.duotin.generator.plugins.CanonicalDomainPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.MysqlPaginationPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.ShardTablePlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.SelectByMapPlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Conditions"/>
+        </plugin>
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释，默认false，true：去除；false：不去除 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 指定在生成的注释是否将包括时间戳，默认是false -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.1.10.202:3306/dt_www" userId="duo113"
+                        password="helloduo"/>
+
+        <javaModelGenerator targetPackage="com.duotin.dao.domain"
+                            targetProject="jduotin_services/src/main/java"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="jduotin_services/src/main/resources"/>
+        <javaClientGenerator targetPackage="com.duotin.dao.mapper"
+                             targetProject="jduotin_services/src/main/java" type="XMLMAPPER"/>
+
+
+        <!--<table tableName="duotin_platform_page" domainObjectName="operating.PlatformPage">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+
+        <!--&lt;!&ndash;搜索相关&ndash;&gt;-->
+        <!--<table tableName="duotin_search_word_map" domainObjectName="operating.SearchWordMap">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="is_del" javaType="Integer"/>-->
+            <!--<columnOverride column="map_type" javaType="Integer"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_search_suggest" domainObjectName="operating.SearchSuggest">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="is_deleted" javaType="Integer"/>-->
+        <!--</table>-->
+
+
+        <table tableName="duotin_hotword" domainObjectName="operating.Hotword">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="is_hide" javaType="Integer"/>
+            <columnOverride column="is_highlight" javaType="Integer"/>
+        </table>
+
+        <!--<table tableName="duotin_search_default_word" domainObjectName="operating.SearchDefaultWord">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="is_del" javaType="Integer"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_search_seg" domainObjectName="operating.SearchSeg">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="is_del" javaType="Integer"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_search_forbid_word" domainObjectName="operating.SearchForbidWord">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="is_del" javaType="Integer"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_startup_page" domainObjectName="operating.StartupPage">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_startup_page_channel" domainObjectName="operating.StartupPageChannel">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_channels" domainObjectName="operating.Channels">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="duotin_setting_extra_options" domainObjectName="operating.SettingExtraOptions">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="is_hide" javaType="Integer"/>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="duotin_topic" domainObjectName="operating.Topic">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_tag" domainObjectName="Tag">-->
+            <!--<property name="partitionedTable" value="dt_core"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+
+        <!--</table>-->
+
+        <!--<table tableName="duotin_topic_album" domainObjectName="operating.TopicAlbum">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_page" domainObjectName="operating.RecommendPage">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_page_column" domainObjectName="operating.PageColumn">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="column" delimitedColumnName="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_page_column_store" domainObjectName="operating.PageColumnStore">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_page_content" domainObjectName="operating.PageContent">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_share_content" domainObjectName="operating.ShareContent">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_article" domainObjectName="operating.Article">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="duotin_recommend" domainObjectName="operating.Recommend">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="duotin_search_exception_tip" domainObjectName="operating.SearchExceptionTip">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="is_del" javaType="Integer"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_search_tag" domainObjectName="operating.SearchTag">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_songlist" domainObjectName="operating.SongBook">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_song" domainObjectName="operating.Song">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_search_log" domainObjectName="operating.SearchLog">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+    </context>
+</generatorConfiguration>

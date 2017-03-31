@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry location="/duotin/mysql-connector-java-5.1.6.jar"/>
+    <context id="context1" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="com.duotin.generator.plugins.BuildersPlugin"/>
+        <plugin type="com.duotin.generator.plugins.CanonicalDomainPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.MysqlPaginationPlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.ShardTablePlugin"></plugin>
+        <plugin type="com.duotin.generator.plugins.SelectByMapPlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Conditions"/>
+        </plugin>
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释，默认false，true：去除；false：不去除 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 指定在生成的注释是否将包括时间戳，默认是false -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.1.10.202:3306/dt_user_behavior" userId="duo113"
+                        password="helloduo"/>
+
+        <javaModelGenerator targetPackage="com.duotin.dao.domain"
+                            targetProject="services/src/main/java"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="services/src/main/resources"/>
+        <javaClientGenerator targetPackage="com.duotin.dao.mapper"
+                             targetProject="services/src/main/java" type="XMLMAPPER"/>
+
+
+
+        <!--<table tableName="duotin_statistics_download_every_day" domainObjectName="download.StatisticsDownloadEveryDay">-->
+            <!--<property name="partitionedTable" value="ub"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_statistics_play_every_day" domainObjectName="listen.StatisticsPlayEveryDay">-->
+            <!--<property name="partitionedTable" value="ub"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_statistics_like_every_day" domainObjectName="like.StatisticsLikeEveryDay">-->
+        <!--<property name="partitionedTable" value="ub"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_statistics_concern_every_day" domainObjectName="concern.StatisticsAlbumConcernEveryDay">-->
+            <!--<property name="partitionedTable" value="ub"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_statistics_follow_every_day" domainObjectName="follow.StatisticsFollowEveryDay">-->
+            <!--<property name="partitionedTable" value="ub"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_statistics_content_analyze" domainObjectName="listen.StatisticsContentAnalyze">-->
+            <!--<property name="partitionedTable" value="ub"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="duotin_user_listen_history_2014_07" domainObjectName="listen.UserListenHistory">-->
+        <!--<property name="partitionedTable" value="ub"/>-->
+        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <table tableName="duotin_user_download_history_2015_07" domainObjectName="download.UserDownload">
+            <property name="partitionedTable" value="ub"/>
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+        <!--<table tableName="duotin_user_follow_fans_0" domainObjectName="follow.UserFollowFans">-->
+            <!--<property name="partitionedTable" value="ub"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <table tableName="duotin_statistics_concern_every_day" domainObjectName="subscribe.StatisticsAlbumConcernEveryDay">
+            <property name="partitionedTable" value="ub"/>
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
